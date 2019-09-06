@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Color(0xff7f269d),
       ),
-      home: MyHomePage(title: 'Nubank'),
+      home: Home(),
     );
   }
 }
