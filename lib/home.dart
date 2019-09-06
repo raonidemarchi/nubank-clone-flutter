@@ -14,7 +14,6 @@ class Home extends StatelessWidget {
     ));
     
     return Scaffold(
-      backgroundColor: backgroundColor,
       body: Center(
         child: Carousel()
       ),

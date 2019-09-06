@@ -7,9 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Nubank',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xff7f269d),
+        accentColor: Color(0xff7f269d),
         scaffoldBackgroundColor: Color(0xff7f269d),
       ),
       home: Home(),

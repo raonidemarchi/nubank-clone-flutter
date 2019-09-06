@@ -6,7 +6,7 @@ class Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      height: 420,
+      height: 400,
       viewportFraction: 1.0,
       enableInfiniteScroll: false,
       aspectRatio: 16 / 9,
@@ -15,15 +15,16 @@ class Carousel extends StatelessWidget {
           builder: (BuildContext context) {
             return Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 16
+                horizontal: 16,
+                vertical: 8,
               ),
               child: Card(
-                elevation: 6,
+                elevation: 4,
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(24),
+                  padding: EdgeInsets.all(24),
                   child: Text(
-                    'title',
+                    'title 2',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
