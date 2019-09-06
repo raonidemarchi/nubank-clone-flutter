@@ -3,13 +3,11 @@ import 'package:flutter/services.dart';
 import 'carousel_slider.dart';
 
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColor = Theme.of(context).scaffoldBackgroundColor;
-
+    // status bar definitions
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: backgroundColor,
+      statusBarColor: Color(0x00000000),
       statusBarIconBrightness: Brightness.light,
     ));
     
