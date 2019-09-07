@@ -32,7 +32,7 @@ class _Carousel extends State<Carousel> {
                   child: Card(
                     elevation: 1,
                     child: Container(
-                      width: double.infinity,
+                      width: double.maxFinite,
                       padding: EdgeInsets.symmetric(
                         vertical: 32,
                         horizontal: 24,
@@ -58,7 +58,7 @@ class _Carousel extends State<Carousel> {
                 return Container(
                   width: 4,
                   height: 4,
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 3),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 2.5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _current == i ? Colors.white : Color.fromRGBO(255, 255, 255, .3)
