@@ -1,18 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:nubank_clone/screens/home/components/nu_conta_menu.dart';
+import 'package:nubank_clone/screens/home/components/credit_card_menu.dart';
+import 'package:nubank_clone/screens/home/components/rewards_menu.dart';
 
-class Carousel extends StatefulWidget {
+class HomeCarousel extends StatefulWidget {
+  
   @override
-  _Carousel createState() => _Carousel();
+  _HomeCarousel createState() => _HomeCarousel();
 }
 
-class _Carousel extends State<Carousel> {
+class _HomeCarousel extends State<HomeCarousel> {
   int _current = 0;
+  List<Widget> carouselMenus = [
+    Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: CreditCardMenu(),
+    ),
+
+    Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: NuContaMenu(),
+    ),
+
+    Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: RewardsMenu(),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
       children: [
         CarouselSlider(
           height: 360,
@@ -24,29 +43,7 @@ class _Carousel extends State<Carousel> {
               _current = index;
             });
           },
-          items: [1, 2, 3].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Card(
-                    elevation: 1,
-                    child: Container(
-                      width: double.maxFinite,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 32,
-                        horizontal: 24,
-                      ),
-                      child: Text(
-                        'title',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            );
-          }).toList(),
+          items: carouselMenus,
         ),
 
         Container(
@@ -61,7 +58,7 @@ class _Carousel extends State<Carousel> {
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 2.5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _current == i ? Colors.white : Color.fromRGBO(255, 255, 255, .3)
+                    color: _current == i ? Colors.white : Color.fromRGBO(255, 255, 255, .3),
                   ),
                 );
               }).toList(),

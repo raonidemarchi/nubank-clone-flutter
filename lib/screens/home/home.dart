@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'carousel.dart';
-import 'home_menu.dart';
+import 'package:nubank_clone/screens/home/components/carousel.dart';
+import 'package:nubank_clone/screens/home/components/menu.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -15,11 +15,11 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               height: 80,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              width: double.maxFinite,
               child: Center(
                 child: Text(
                   'Raoni',
@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
             ),
 
             Container(
-              child: Carousel(),
+              child: HomeCarousel(),
             ),
 
             Container(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_menu_card.dart';
+import 'package:nubank_clone/screens/home/components/menu_card.dart';
 
 class HomeMenu extends StatelessWidget {
 
