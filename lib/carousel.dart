@@ -12,7 +12,7 @@ class _Carousel extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
       children: [
         CarouselSlider(
           height: 360,
@@ -27,10 +27,8 @@ class _Carousel extends State<Carousel> {
           items: [1, 2, 3].map((i) {
             return Builder(
               builder: (BuildContext context) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                  ),
+                return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Card(
                     elevation: 1,
                     child: Container(
@@ -40,7 +38,7 @@ class _Carousel extends State<Carousel> {
                         horizontal: 24,
                       ),
                       child: Text(
-                        'title 2',
+                        'title',
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
@@ -53,14 +51,20 @@ class _Carousel extends State<Carousel> {
 
         Container(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 4
-            ),
-            child: Text(
-              '$_current',
-              style: TextStyle(
-                color: Color.fromRGBO(255, 255, 255, 0.9)
-              ),
+            padding: EdgeInsets.only(top: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [0, 1, 2].map((i) {
+                return Container(
+                  width: 4,
+                  height: 4,
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 3),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _current == i ? Colors.white : Color.fromRGBO(255, 255, 255, .3)
+                  ),
+                );
+              }).toList(),
             ),
           ),
         )
