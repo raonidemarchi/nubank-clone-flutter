@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nubank_clone/screens/home/components/carousel.dart';
-import 'package:nubank_clone/screens/home/components/menu.dart';
+import 'package:nubank_clone/screens/home/components/carousel/carousel.dart';
+import 'package:nubank_clone/screens/home/components/horizontal_menu/horizontal_menu.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // status bar definitions
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      // status bar
       statusBarColor: Color(0),
       statusBarIconBrightness: Brightness.light,
+
+      // navgitaion bar
+      systemNavigationBarColor: Color.alphaBlend(Color(0x44000000), Theme.of(context).primaryColor),
+      systemNavigationBarIconBrightness: Brightness.light,
     ));
     
     return Scaffold(
@@ -29,12 +33,12 @@ class Home extends StatelessWidget {
             ),
 
             Container(
-              child: HomeCarousel(),
+              child: Carousel(),
             ),
 
             Container(
               padding: EdgeInsets.only(bottom: 16),
-              child: HomeMenu(),
+              child: HorizontalMenu(),
             ),
           ],
         ),
