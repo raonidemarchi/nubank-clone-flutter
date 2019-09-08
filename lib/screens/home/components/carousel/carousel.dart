@@ -21,10 +21,9 @@ class _Carousel extends State<Carousel> {
     return Column(
       children: [
         CarouselSlider(
-          height: 360,
+          height: (MediaQuery.of(context).size.height - 190) * .8,
           viewportFraction: 1.0,
           enableInfiniteScroll: false,
-          aspectRatio: 16 / 9,
           onPageChanged: (index) {
             setState(() {
               _current = index;
@@ -32,7 +31,7 @@ class _Carousel extends State<Carousel> {
           },
           items: _carouselItems,
         ),
-
+          
         CarouselDots(
           carouselItemsLengthList: _carouselItemsLengthList,
           current: _current,
