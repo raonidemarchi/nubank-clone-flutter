@@ -9,42 +9,34 @@ class Home extends StatelessWidget {
     
     return Scaffold(
       body: SafeArea(
-        child: Stack(children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            height: (MediaQuery.of(context).size.height - 190) * .2,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Center(
+                child: Text(
                   'Raoni',
                   style: Theme.of(context).textTheme.display4,
                 ),
-              ],
+              ),
             ),
-          ),
 
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 124,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Carousel(),
-              ],
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 200,
+              ),
+              child: Transform.translate(
+                offset: Offset(0, 0),
+                child: Carousel(),
+              ),
             ),
-          ),
 
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 16,
-            child: HorizontalMenu(),
-          ),
-        ]),
+            Container(
+              padding: EdgeInsets.only(bottom: 16, top: 4),
+              child: HorizontalMenu(),
+            ),
+          ],
+        ),
       ),
     );
   }

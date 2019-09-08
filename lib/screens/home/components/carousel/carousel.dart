@@ -19,6 +19,7 @@ class _Carousel extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CarouselSlider(
           height: (MediaQuery.of(context).size.height - 190) * .8,
