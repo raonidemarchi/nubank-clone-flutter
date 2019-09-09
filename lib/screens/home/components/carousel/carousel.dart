@@ -21,16 +21,19 @@ class _Carousel extends State<Carousel> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CarouselSlider(
-          height: (MediaQuery.of(context).size.height - 190) * .8,
-          viewportFraction: 1.0,
-          enableInfiniteScroll: false,
-          onPageChanged: (index) {
-            setState(() {
-              _current = index;
-            });
-          },
-          items: _carouselItems,
+        ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 420),
+          child: CarouselSlider(
+            height: (MediaQuery.of(context).size.height - 190) * .8,
+            viewportFraction: 1.0,
+            enableInfiniteScroll: false,
+            onPageChanged: (index) {
+              setState(() {
+                _current = index;
+              });
+            },
+            items: _carouselItems,
+          ),
         ),
           
         CarouselDots(
