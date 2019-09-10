@@ -18,29 +18,32 @@ class _Carousel extends State<Carousel> {
   
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: 420),
-          child: CarouselSlider(
-            height: (MediaQuery.of(context).size.height - 190) * .8,
-            viewportFraction: 1.0,
-            enableInfiniteScroll: false,
-            onPageChanged: (index) {
-              setState(() {
-                _current = index;
-              });
-            },
-            items: _carouselItems,
+    return Padding(
+      padding: EdgeInsets.only(bottom: 32),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: 420),
+            child: CarouselSlider(
+              height: MediaQuery.of(context).size.height * .6,
+              viewportFraction: 1.0,
+              enableInfiniteScroll: false,
+              onPageChanged: (index) {
+                setState(() {
+                  _current = index;
+                });
+              },
+              items: _carouselItems,
+            ),
           ),
-        ),
-          
-        CarouselDots(
-          carouselItemsLengthList: _carouselItemsLengthList,
-          current: _current,
-        )
-      ],
+
+          CarouselDots(
+            carouselItemsLengthList: _carouselItemsLengthList,
+            current: _current,
+          ),
+        ]
+      ),
     );
   }
 }
