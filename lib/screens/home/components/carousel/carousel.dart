@@ -18,15 +18,14 @@ class _Carousel extends State<Carousel> {
   
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 32),
-      child: Column(
+    return 
+       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ConstrainedBox(
             constraints: BoxConstraints(maxHeight: 420),
             child: CarouselSlider(
-              height: MediaQuery.of(context).size.height * .6,
+              height: MediaQuery.of(context).size.height * .7 - 108,
               viewportFraction: 1.0,
               enableInfiniteScroll: false,
               onPageChanged: (index) {
@@ -43,7 +42,6 @@ class _Carousel extends State<Carousel> {
             current: _current,
           ),
         ]
-      ),
     );
   }
 }

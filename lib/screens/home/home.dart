@@ -8,28 +8,45 @@ class Home extends StatefulWidget {
   _Home createState() => _Home();
 }
 
-
-
 class _Home extends State<Home> {
   double _cardDown = 0;
+  double _carouselHeight = 0;
+  double _horizontalMenuHeight = 0;
+  GlobalKey _keyCarousel = GlobalKey();
+  GlobalKey _keyHorizontalMenu = GlobalKey();
 
   @override
-  Widget build(BuildContext context) {
-    
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    super.initState();
+  }
+
+  _afterLayout(_) {
+    final RenderBox renderCarousel = _keyCarousel.currentContext.findRenderObject();
+    final RenderBox renderHorizontalMenu = _keyHorizontalMenu.currentContext.findRenderObject();
+
+    setState(() {
+      _carouselHeight = renderCarousel.size.height;
+      _horizontalMenuHeight = renderHorizontalMenu.size.height;
+    });
+  }
+
+  Widget build(BuildContext context) {  
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
             Positioned(
-              left: 0,
+              top: 0,
               right: 0,
-              height: MediaQuery.of(context).size.height * .3 - 108,
+              left: 0,
+              bottom: _carouselHeight + _horizontalMenuHeight,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
                     onTap: () => setState(() {
-                      _cardDown = _cardDown == 0 ? 400 : 0;
+                      _cardDown = _cardDown == 0 ? -_carouselHeight + _horizontalMenuHeight : 0;
                     }),
                     child: Text(
                       'Raoni',
@@ -45,17 +62,20 @@ class _Home extends State<Home> {
               ),
             ),
 
-            AnimatedContainer(
-              duration: Duration(milliseconds: 200),
-              child: Transform.translate(
-                offset: Offset(0, _cardDown),
-                child: Carousel(),
-              ),
+            AnimatedPositioned(
+              key: _keyCarousel,
+              duration: Duration(milliseconds: 100),
+              right: 0,
+              left: 0,
+              bottom: _cardDown != 0 ? _cardDown : _horizontalMenuHeight,
+              child: Carousel(),
             ),
 
-            Positioned(
-              left: 0,
+            AnimatedPositioned(
+              key: _keyHorizontalMenu,
+              duration: Duration(milliseconds: 100),
               right: 0,
+              left: 0,
               bottom: 16,
               child: HorizontalMenu(),
             ),
